@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>QW Pager Test</title>
+	<!--<script type="text/javascript" src="http://192.168.91.166:8402/resource/js/apps/qwrap.src.js"></script>-->
+	<script src="http://s0.qhimg.com/lib/qwrap/101.js" type="text/javascript"></script>
+	<script type="text/javascript" src="../pager.js"></script>
+	<style type="text/css">
+		.pager-i a {padding:0 5px;}
+	</style>
+</head>
+<body>
+	<!-- pager1 -->
+	<div class="pager-wrap" id="pager1">
+		<div class="pager">
+			<p class="page-i">
+				<span>第一页</span>
+				<span>上一页</span>
+				<a href="#"><span>1</span></a>
+				<a href="#"><span>2</span></a>
+				<em class="curr"><span>3</span></em>
+				<a href="#"><span>4</span></a>
+				<a href="#"><span>5</span></a>
+				<span>下一页</span>
+				<span>最后一页</span>
+			</p>
+			<form class="page-f" onsubmit="this.pn.value++">
+				<fieldset>
+					<legend>跳转到页码</legend>
+					<p>
+						<input size="3" name="pn">
+						<button type="submit">确定</button>
+					</p>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<!--//pager1 -->
+	
+	<!-- pager2 -->
+	<div class="pager-wrap" id="pager2">
+	</div>
+	<!--//pager2 -->
+
+	<!-- pager3 -->
+	<div class="pager-wrap" id="pager3">
+	</div>
+	<!--//pager3 -->
+
+	<!-- pager4 -->
+	<div class="pager-wrap" id="pager4">
+	</div>
+	<!--//pager4 -->
+	
+	<script type="text/javascript">
+	(function(){
+		//new Pager('#pager1').render();
+
+		//var p2 = new Pager('#pager2', {total : 201});
+		//p2.hasForm = true;
+		//p2.render();
+
+		//W('#pager3').Pager();
+
+				
+	})();
+		var p4 = new Pager('#pager4',{
+				//startPn : 1,
+				qsize : 'size',
+				qoffset : 'offset',
+				total : 600,
+				firstText : '这是第一页',
+				eachPg : 13,
+				showOut : 20,
+				hasForm : true
+			});
+		p4.layout = ['first', 'pre', 'list', 'last', 'next'];
+		p4.on('go', function(e){			
+			if(!confirm('要跳到的页面是第' + (e.i/* + p4.startPn*/) + '页')){
+				e.preventDefault();
+			}
+		});
+		p4.on('next', function(e){
+			if(!confirm('下一页')){
+				e.preventDefault();
+			}
+		});
+		p4.on('first', function(e){
+			if(!confirm('这是第一页lo')){
+				e.preventDefault();
+			}
+		});
+		p4.render();
+		
+		//p4.go(4);
+	</script>
+</body>
+</html>

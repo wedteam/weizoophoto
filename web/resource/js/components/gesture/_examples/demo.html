@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>手势识别</title>
+
+<script type="text/javascript" src="../../../apps/qwrap_mobile.src.js"></script>
+<script type="text/javascript" src="../dollar.js"></script>
+
+<script type="text/javascript">
+
+var myScroll;
+function loaded() {
+	myScroll = W('#wrapper').scrollable({
+		scroller: '#scroller'
+	});
+
+	var MOVE_EV = 'ontouchstart' in window ? 'touchmove' : 'mousemove',
+		START_EV = 'ontouchstart' in window ? 'touchstart' : 'mousedown',
+		END_EV = 'ontouchstart' in window ? 'touchend' : 'mouseup';
+
+	var _points = [], isStart = false, _r = new QW.$Recognizer();
+
+	function endHandler(){
+		if(isStart){
+			var result = _r.recognize(_points);
+
+			if(result.score >= 0.8){
+				W('#'+result.name).css('border','solid 3px red');
+				//console.log(result);
+			}
+			W('#touchpad').html([result.name, result.score, _points.length]);
+			isStart = false;
+		}		
+	}
+
+	W('#touchpad').on(START_EV, function(){
+						_points=[]; 
+						W('.gesture').css('border','none');
+						isStart = true;
+					})
+				  .on(END_EV, endHandler)
+				  .on(MOVE_EV, function(evt){
+				  		if(isStart)
+				  			_points.push([evt.pageX, evt.pageY]);
+				  });
+
+	if(END_EV == 'mouseup'){
+		W('#touchpad').on('mouseout', endHandler);
+	}
+}
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+document.addEventListener('DOMContentLoaded', loaded, false);
+
+</script>
+
+<style type="text/css" media="all">
+body,ul,li {
+	padding:0;
+	margin:0;
+}
+
+body {
+	font-size:12px;
+	-webkit-user-select:none;
+    -webkit-text-size-adjust:none;
+/*	-webkit-box-sizing:border-box;*/
+	font-family:helvetica;
+/*	padding-bottom:45px;	/*	This prevents the scroller to lock if the user swipes down outside of the screen.
+							 	NOT needed if in home screen mode. */
+}
+
+#header {
+	position:absolute; z-index:2;
+	top:0; left:0;
+	width:100%;
+	height:45px;
+	line-height:45px;
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #fe96c9), color-stop(0.05, #d51875), color-stop(1, #7b0a2e));
+	background-image:-moz-linear-gradient(top, #fe96c9, #d51875 5%, #7b0a2e);
+	background-image:-o-linear-gradient(top, #fe96c9, #d51875 5%, #7b0a2e);
+	padding:0;
+	color:#eee;
+	font-size:20px;
+	text-align:center;
+}
+
+#header a {
+	color:#f3f3f3;
+	text-decoration:none;
+	font-weight:bold;
+	text-shadow:0 -1px 0 rgba(0,0,0,0.5);
+}
+
+#wrapper {
+	position:absolute; z-index:1;
+	top:45px; bottom:0; left:0;
+	width:100%;
+	background:#aaa;
+	overflow:auto;
+}
+
+#scroller {
+	width:600px;
+	height:100%;
+	float:left;
+	padding:0;
+	margin:0 300px;
+}
+
+#scroller ul {
+	list-style:none;
+	display:block;
+	float:left;
+	width:100%;
+	height:100%;
+	padding:0;
+	margin:0;
+	text-align:left;
+}
+
+#scroller li {
+	display:block;
+	vertical-align:middle;
+	float:left;
+	padding:0 10px;
+	width:120px;
+	height:100%;
+	border-left:1px solid #ccc;
+	border-right:1px solid #fff;
+	background-color:#fafafa;
+	font-size:14px;
+}
+
+#touchpad {
+	position:absolute;
+	width:100%;
+	height:100%;
+	display:block;
+}
+
+.gesture{
+	background-image:url('assets/unistrokes.gif'); 
+	background-repeat:no-repeat;
+}
+
+#triangle{
+	width:110px;
+	height:110px;
+	background-position:10px 15px;
+}
+
+#rectangle{
+	width:110px;
+	height:110px;
+	background-position:-220px 0;
+}
+
+#circle{
+	width:110px;
+	height:110px;
+	background-position:-350px 0;
+}
+
+#check{
+	width:110px;
+	height:110px;
+	background-position:0 -100px;
+}
+
+#v{
+	width:110px;
+	height:110px;
+	background-position:-220px -220px;
+}
+
+#star{
+	width:110px;
+	height:110px;
+	background-position:-220px -340px;
+}
+</style>
+</head>
+<body>
+<div id="header"><a href="http://cubiq.org/iscroll">手势识别 Demo</a></div>
+
+<div id="wrapper">
+	<div id="touchpad">手势识别 v0.1</div>
+	<div id="scroller">
+		<ul id="thelist">
+			<li>
+				<div id="triangle" class="gesture"></div>
+				<div id="rectangle" class="gesture"></div>
+				<div id="circle" class="gesture"></div>
+			</li>
+			<li>
+				<div id="check" class="gesture"></div>
+				<div id="v" class="gesture"></div>
+				<div id="star" class="gesture"></div>
+			</li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

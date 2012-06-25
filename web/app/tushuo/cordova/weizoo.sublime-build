@@ -1,0 +1,4 @@
+//Save project on the projects root dir & copy this file to your $Packages/User dir
+{
+	"cmd": ["python", "-u", "$project_path/build.py"]
+}

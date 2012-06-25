@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="generator" content="editplus" />
+  <meta name="author" content="" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <script src="../../../apps/qwrap.src.js"></script>
+ </head>
+
+ <body>
+	<div id="test">test</div>
+	<div id="test2">test2</div>
+ </body>
+ <script>
+	W("#test").fadeOut(1000).sleep(5000).fadeIn(1000);
+
+	W("#test2").on('click', function(){
+		W("#test").clearAnimate();
+	});
+
+	W("#test").wait("foobar",function(){
+		console.log("foobar");
+	}).setTimeout(5000, function(){
+		W(this).signal("foobar");
+	});
+
+	/*W("#test2").wait(function(){
+		W(this).on("click", function(){
+			console.log('click');
+			W(this).signal();
+		});
+	}).wait(function(){
+		console.log('firstclick');
+	});*/
+ </script>
+</html>

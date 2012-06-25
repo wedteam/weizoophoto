@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>微著图说</title>
+        <meta name="viewport" id="viewport" content="width=640, initial-scale=0.5, user-scalable=no;" />        
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
+        <link rel="apple-touch-startup-image" href="images/bg.png" />
+        <link rel="apple-touch-icon" href="icon.png" />              
+        <link rel="apple-touch-icon-precomposed" href="icon.png" />
+        <link href="cordova/www/css/weizoo.css?2012031803" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="cordova/www/js/qwrap_mobile.src.combo.js"></script>
+        <script type="text/javascript" src="cordova/www/js/app.js?2012032101"></script>
+        <script type="text/javascript">
+            // If you want to prevent dragging, uncomment this section
+            
+            function preventBehavior(e) 
+            { 
+                e.preventDefault(); 
+            };
+            document.addEventListener("touchmove", preventBehavior, false);
+             
+            
+            /* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
+             see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
+             for more details -jm */
+            /*
+             function handleOpenURL(url)
+             {
+             // TODO: do something with the url passed in.
+             }
+             */
+
+            var app = {
+                name : '微著图说',
+                version : '1.0.1' 
+            } 
+            
+            Dom.ready(function(){	
+				main();	
+            });
+            
+        
+        </script>
+    </head>
+    <body>
+        <div id="doc">
+            <div id="wrap">
+                <!-- 目录 -->
+                <div class="m" id="index">
+                    <h1>
+                        <img src="images/banner.png" class="banner" alt="微著图说">
+                            </h1>                    
+                    <div id="image-index"><div class="vscroll">
+                        <ul class="cover">
+                        </ul>
+                        <ul class="opt">
+                            <!--<li>
+                                <h3>我的收藏</h3>
+                                <div class="icon">
+                                    <span class="i i-fav i-fav-n"></span>
+                                    <span class="n">2</span>
+                                </div>
+                            </li>-->
+                            <li id="optSetting">
+                                <h3>设置</h3>
+                                <div class="icon">
+                                    <span class="i i-setting"></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div></div>
+                </div>
+                <!--//目录 -->
+                <!-- 阅读图片 -->
+                <!--<div class="m show">
+                 <div class="image-page"><div class="vscroll">
+                 <ul>
+                 <li>
+                 <img src="images/p.jpg" />
+                 <div class="etc">
+                 <h3>尼斯湖（Loch Ness)亦译内斯湖</h3>
+                 <p class="desc">
+                 位于英国苏格兰高原北部的大峡谷中，湖长39公里，宽2.4公里。面积并不大却深。平均深度达200米，最深处有300米
+                 </p>
+                 <div class="b">
+                 <p>来源于：国家地理</p>
+                 <div class="icon">
+                 <span class="i i-fav"></span>
+                 <span class="i i-share"></span>
+                 </div>
+                 </div>                                
+                 </div>
+                 </li>
+                 </ul>
+                 </div></div>
+                 </div>-->
+                <!--//阅读图片 -->
+            </div>
+        </div>
+        <!--返回目录-->
+        <div id="goback" class="goback">
+            <span class="i i-back"></span>
+        </div>
+        <!--//返回目录-->
+        <div id="setting">
+            <!-- 设置 -->
+            <div class="m" id="setup">
+                <div class="goback">
+                    设置
+                    <span id="back" class="back">返回</span>                        
+                </div>
+                <ul class="sets">
+                    <li id="bind-weibo">
+                        微博账号绑定
+                        <span class="tips">
+                            <span class="onoff off"></span>
+                        </span>
+                    </li>
+                </ul>
+                <ul class="sets">
+                    <li id="auto-download-2g">
+                        2G/3G网络下载清晰图片
+                        <span class="tips">
+                            <span class="onoff off"></span>
+                        </span>
+                    </li>
+                    <li id="storage">
+                        手动清除缓存
+                        <span class="tips">
+                            0MB
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <!--//设置 --> 
+        </div>
+        <!-- 图片页模板 -->
+        <textarea id="template">
+            <div class="image-page"><div class="vscroll">
+                <ul>
+                    <li>
+                        <img data-src="{$imgsrc}" style="background:{$rgb}"/>
+                        <div class="etc">
+                            <h3>{$title}</h3>
+                            <p class="desc">
+                            {$content}
+                            </p>
+                            <div class="b">
+                                <p>来源于：{$referer}</p>
+                                <div class="icon">
+                                    <span class="i i-fav" data-imgurl="{$imgurl}"></span>
+                                    <span class="i i-share" data-pid="{$id}"></span>
+                                </div>
+                            </div>                                
+                        </div>
+                    </li>
+                </ul>
+            </div></div>
+        </textarea>
+        <!-- //图片页模板 -->
+        <!-- 交互提示反馈 -->
+        <div id="message-content">
+            <div id="message-box" class="success">
+                <p>操作成功！</p>
+            </div>
+        </div>
+        <!-- 交互提示反馈 -->
+        <!-- 绑定微博  -->
+        <div id="weibo-oauth">
+            <iframe src="about:blank" style="border:none;width:320px;height:480px"></iframe>
+        </div>
+        <!-- //绑定微博  -->
+    </body>
+</html>

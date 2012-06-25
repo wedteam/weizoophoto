@@ -1,0 +1,86 @@
+*{margin:0;padding:0;}
+body{background:#fff9dd;user-select:none;-webkit-user-select: none;}
+ul {list-style:none;}
+p {font-size:28px;}
+img {display:block;}
+#doc {width:640px;overflow:auto;}
+#wrap {width:1280px;position:relative;}
+#wrap:after{content:'';clear:both;visibility:hidden;}
+.m {width:640px;min-height:960px;float:left;position:relative;}
+.ontop {z-index:10;}
+.goback {height:88px;width:100%;background:#2d2d2d;box-shadow:0 1px 10px #000;}
+#goback {display:none;position:fixed;width:640px;top:0;left:0;opacity:0.8;}
+#goback .i-back {top:30px;left:38px;}
+/*r.png 216px*/
+
+.onoff {display:block;width:154px;height:54px;background:url(images/s.png) no-repeat;}
+.on {background-position:0 -60px;}
+
+.back {display:block;width:102px;height:60px;background:url(images/back.png) 0 -60px no-repeat;}
+.back.hover {background-position:0 0;}
+
+.i {display:block;width:50px;height:50px;position:absolute;background:url(images/icon.png) no-repeat;}
+.i-setting {background-position:-100px -50px;}
+.i-fav {background-position:0 -50px;}
+.i-fav-n {background-position:0 -100px;}
+.i-share {background-position:-50px 5px;}
+.i-back {background-position:-150px 0;}
+
+/*index*/
+#index {background:#111}
+#image-index {overflow:hidden;width:640px;position:absolute;top:190px;bottom:0;left:0;}
+#image-index .vscroll {position:relative;}
+#index .banner {display:block;height:216px;background:#c19d0d;}
+#index li {position:relative;height:216px;}
+#index .cover {min-height:660px;}
+#index .cover li:after {display:block;position:absolute;top:0;left:0;height:50px;width:100%;content:'';box-shadow:-5px 5px 5px #000 inset;opacity: 0.3;}
+#index .title {position:absolute;top:0;left:470px;width:130px;height:60px;background:#000;opacity:0.7;border-radius:0 0 10px 10px;}
+#index .title h2 {height:60px;line-height:60px;text-align:center;color:#fff;font-size:28px;}
+#index .title .n {display:block;position:absolute;top:10px;left:94px;width:49px;height:42px;line-height:42px;text-align:center;color:#ffdf43;background:url(images/n.png) no-repeat;font-size:26px;}
+#index .title .n.c0 {display:none;}
+
+#index .opt {background:url(images/r.png) 0 -216px repeat-x;}
+#index .opt li {padding:0 70px;}
+#index .opt li.hover {background:url(images/r.png) repeat-x;}
+#index .opt h3 {text-align:right;height:216px;line-height:216px;color:#fff;font-size:32px;}
+#index .opt .icon {position:absolute;top:0;left:70px;height:216px;width:200px;background:url(images/r.png) 100px -648px no-repeat;}
+#index .opt .icon .i {top:80px;}
+#index .opt .icon .n {font-size:28px;color:#c1a10e;line-height:216px;padding-left:128px;font-size:40px;}
+#index .opt li.hover .i-fav {background-position:0 0;}
+#index .opt li.hover .n {color:#fff;}
+
+/*show*/
+.show {background:#111;box-shadow:-4px 0px 20px #333}
+.image-page {overflow:auto;width:640px;height:960px;}
+.image-page .vscroll {position:relative;}
+.show h3 {height:66px;line-height:66px;font-size:30px;border-bottom:2px solid #333;}
+.show .etc {position:relative;padding:0 38px;color:#cecece;box-shadow:0 -2px 20px #000}
+.show .desc {padding:16px 0;min-height:300px;border-bottom:2px solid #333;}
+.show .b {height:80px;line-height:80px;color:#444;position:relative;}
+.show .b .i-fav {top:15px;right:92px;}
+.show .b .i-share {top:15px;right:0;}
+.show img{width:639px;min-height:480px;}
+/*.show.hover .goback {display:block;}*/
+
+/*setup*/
+#setup {background:url(images/b.png) #ccc;}
+#setup .goback {font-size:36px;font-weight:bold;text-align:center;color:#fff;line-height:88px;}
+#setup .back {position:absolute;top:13px;left:10px;font-size:24px;font-weight:bold;height:60px;line-height:60px;text-indent:30px;text-align:left;color:#fff;}
+#setup .sets {margin:22px 18px 42px;border:2px solid #ababab;border-radius:20px;box-shadow:0 2px 0 #fff;}
+#setup .sets li {position:relative;height:86px;line-height:86px;text-indent:20px;background:#fff;font-size:32px;border-top:2px solid #ababab;font-weight:bold;}
+#setup .sets li:first-child {border-radius:20px 20px 0 0}
+#setup .sets li:last-child {border-radius:0 0 20px 20px}
+#setup .sets li:first-child:last-child {border-radius:20px}
+#setup .sets .a {background:url(images/a.png) #fff 564px 28px no-repeat;}
+#setup .sets .tips {position:absolute;left:395px;color:#324f85;font-size:32px;}
+#setup .sets .onoff {position:absolute;top:18px;left:0;}
+#setup .sets li.hover {background-color:#026bea;color:#fff;}
+#setup .sets li.a:hover {background-position:564px -56px;}
+#setup .sets li.hover .tips {color:#fff;}
+
+/*_tmp*/
+/*-640px*n*/
+/*#wrap {left:-1280px;}*/
+
+#template {display:none;}
+#setting {display:none;}

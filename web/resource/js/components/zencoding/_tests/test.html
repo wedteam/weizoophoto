@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta name="generator" content="editplus" />
+  <meta name="author" content="" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <script src="../../../apps/qwrap.src.js"></script>
+  <script src="../zen.js"></script>
+ </head>
+
+ <body>
+  <div id="test"></div>
+
+  <script type="text/javascript">
+	var match = W.zen("(a+div)*3+a>p#c[d=1 e=2]+p");
+	//console.log(match.core);
+	match.filter("div").forEach(function(el, i){
+		W(el).html(i+1);
+	});
+	match.forEach(function(el){
+		W("#test").appendChild(el);
+	}).query("#c").html("test").css("color","red");
+  </script>
+
+  <p>
+   (a+div)*3+a>p#c[d=1 e=2]+p
+  </p>
+ </body>
+</html>

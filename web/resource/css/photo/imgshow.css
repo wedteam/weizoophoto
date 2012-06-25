@@ -1,0 +1,43 @@
+body {position:relative;width:1040px;margin:20px auto;}
+h1 {overflow:hidden;padding:10px 0;border-bottom:2px solid #efefef;}
+#imgs-list {margin-top:10px;-webkit-column-count:4;-webkit-column-gap:10px;-webkit-column-width:252px;-moz-column-count:4;-moz-column-gap:10px;-moz-column-width:252px;column-count:4;column-gap:10px;column-width:252px;}
+.img-wrap {width:250px;margin-bottom:10px;border:1px solid #ccc;border-radius:3px;overflow:hidden}
+.img-inner {position:relative;font-size:12px;cursor:pointer;}
+.img-inner img {display:block;width:240px;min-height:135px;margin:5px;background:#fcfcfc}
+.img-inner .info {position:absolute;padding:5px 10px;left:5px;bottom:0;width:220px;max-height:109px;background:#000;opacity:0.7;-moz-opacity:0.7;z-index:-1;}
+.img-inner .info p {line-height:16px;color:#fff}
+.img-inner .info.on {opacity:1;-moz-opacity:1;}
+
+#fliter {position:absolute;top:3px;right:0}
+
+.pagers {margin-top:20px;text-align:center;}
+.pager-i em, .pager-i a {display:inline-block;padding:0 5px;margin:0 3px;min-width:10px;height:20px;text-align:center;line-height:20px;border:1px solid #ccc;}
+.pager-i em {background:#ccc}
+.pager-i a {color:#666;text-decoration:none;cursor:pointer}
+.pager-i a:hover {background:#ccc;color:#333}
+
+.panel {display:none}
+#panel {position:fixed;left:50%;margin-left:-360px;top:0;width:700px;padding:20px;border:2px solid #ccc;background:#fff;z-index:100;}
+#panel .img {margin:10px auto;/*min-height:360px;*/text-align:center;overflow:hidden}
+#panel img {width:640px;}
+#panel img.min {width:100px;}
+#panel .img p {width:640px;margin:5px auto;font-size:12px;text-align:left;color:#333}
+#panel .data {width:640px;margin:10px auto;border-top:1px dashed #999;padding-top:10px;font-size:12px;}
+#panel .data p {margin:8px 0;}
+#panel textarea {width:100%}
+#panel label {padding-right:20px;}
+#panel .now {font-weight:bold}
+#panel .change-size, #panel .close {position:absolute;height:20px;line-height:20px;width:20px;top:2px;right:2px;border:1px solid #999;background:#ccc;color:#fff;cursor:pointer;text-align:center;}
+#panel .change-size {right:30px;}
+#mask {position:fixed;top:0;left:0;height:100%;width:100%;background:#000;opacity:0.7;}
+
+
+
+/*
+.img-inner:hover .info{z-index:2;}
+.img-inner a {color:#ccf;text-decoration:none;padding:0 10px;}
+.img-inner a:hover {color:#fff;text-decoration:underline;}
+.img-inner p.btns {margin-top:-20px;width:264px;text-align:right;}
+.img-inner input {width:260px;}
+.img-inner textarea {width:264px;}
+*/

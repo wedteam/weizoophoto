@@ -1,0 +1,6 @@
+weizoo-tushuo.xcodeproj
+stderr.log
+stderr.log.bak
+build/
+*.sublime-project
+*.sublime-workspace

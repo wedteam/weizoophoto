@@ -1,0 +1,7 @@
+[2011/6/18]
+重构了底层支持w3c标准的Timing Controll(http://www.w3.org/TR/animation-timing/ )
+目前Firefox4和Chrome下用浏览器原生的动画控制器
+test和examples文件夹下有丰富的例子
+文档和注释逐步完善中
+=====================================================
+整理了屈屈(@JerryQu)同学设计的QWrap动画效果组件
